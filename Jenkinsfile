@@ -23,7 +23,7 @@ pipeline {
                     --context '.' \
                     --dockerfile Dockerfile \
                     --verbosity debug \
-                    --destination thachthucregistry.azurecr.io/minimal-go:latest \
+                    --destination thachthucregistry.azurecr.io/minimal-python:latest \
                 '''
             }
         }
