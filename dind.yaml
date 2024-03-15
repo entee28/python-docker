@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: dind
+spec:
+  containers:
+    - name: dind
+      image: docker:dind
+      tty: true
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - name: docker-cache
+          mountPath: /var/lib/docker
+          subPath: docker-cache
+  restartPolicy: Never
+  volumes:
+    - name: docker-cache
+      persistentVolumeClaim:
+        claimName: my-azurefile

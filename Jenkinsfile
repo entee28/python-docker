@@ -2,29 +2,23 @@ pipeline {
     agent none
 
     stages {
-        stage('Build Docker Image with Kaniko') {
+        stage('Build Docker Image with DinD') {
             agent {
                 kubernetes {
-                    defaultContainer 'kaniko'
-                    yamlFile 'kaniko.yaml'
+                    defaultContainer 'dind'
+                    yamlFile 'dind.yaml'
                 }
             }
 
             environment {
-                PATH = "/busybox:/kaniko:$PATH"
+                ACR_CREDS = credentials('acr-sp')
             }
 
             steps {
-                sh '''#!/busybox/sh
-                    /kaniko/executor \
-                    --cache=true \
-                    --use-new-run \
-                    --snapshot-mode=redo \
-                    --context '.' \
-                    --dockerfile Dockerfile \
-                    --verbosity debug \
-                    --destination thachthucregistry.azurecr.io/minimal-python:latest \
-                '''
+                sh 'echo $ACR_CREDS_PSW >> ./password.txt'
+                sh 'cat ./password.txt | docker login thachthucregistry.azurecr.io --username $ACR_CREDS_USR --password-stdin'
+                sh 'docker build -t thachthucregistry.azurecr.io/minimal-python:latest .'
+                sh 'docker push thachthucregistry.azurecr.io/minimal-python:latest'
             }
         }
     }
