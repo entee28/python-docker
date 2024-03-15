@@ -11,7 +11,7 @@ spec:
         privileged: true
       volumeMounts:
         - name: docker-cache
-          mountPath: /var/lib/docker
+          mountPath: /var/test
           subPath: docker-cache
   restartPolicy: Never
   volumes:
