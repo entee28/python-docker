@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: dind
-      image: docker:dind
+      image: docker:20.10-dind
       tty: true
       securityContext:
         privileged: true
