@@ -3,10 +3,10 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: azurefile-xfs
-mountOptions:
-  - mfsymlinks
-  - actimeo=30
-  - nosharesock
+# mountOptions:
+#   - mfsymlinks
+#   - actimeo=30
+#   - nosharesock
 parameters:
   skuName: Standard_LRS
   fsType: xfs
