@@ -12,7 +12,7 @@ spec:
       volumeMounts:
         - name: docker-cache
           mountPath: /var/lib/docker
-          subPath: docker-cache
+          subPath: python-cache
   restartPolicy: Never
   volumes:
     - name: docker-cache
