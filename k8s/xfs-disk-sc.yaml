@@ -3,12 +3,6 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: azuredisk-xfs
 provisioner: disk.csi.azure.com
-mountOptions:
-  - dir_mode=0640
-  - file_mode=0640
-  - mfsymlinks
-  - actimeo=30
-  - nosharesock
 parameters:
   skuname: StandardSSD_LRS
   fsType: xfs
