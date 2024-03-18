@@ -10,12 +10,12 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: azurefile-csi
+  storageClassName: azurefile-xfs
   csi:
     driver: file.csi.azure.com
-    volumeHandle: aks-jenkins-volume # make sure this volumeid is unique for every identical share in the cluster
+    volumeHandle: jenkins-fs # make sure this volumeid is unique for every identical share in the cluster
     volumeAttributes:
-      shareName: aksshare
+      shareName: jenkins-file-share
     nodeStageSecretRef:
       name: azure-secret
       namespace: default
