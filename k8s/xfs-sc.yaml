@@ -11,7 +11,7 @@ mountOptions:
   - nosharesock
 parameters:
   skuName: Standard_LRS
-  fsType: xfs
+  fsType: ext4
 provisioner: file.csi.azure.com
 reclaimPolicy: Retain
 volumeBindingMode: Immediate

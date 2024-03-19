@@ -17,7 +17,7 @@ spec:
     volumeHandle: dind-volumeid # make sure this volumeid is unique in the cluster
     volumeAttributes:
       shareName: jenkins-file-share/dind
-      # fsType: xfs
+      fsType: ext4
     nodeStageSecretRef:
       name: azure-secret
       namespace: default
