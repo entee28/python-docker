@@ -26,4 +26,4 @@ spec:
   volumes:
     - name: docker-cache
       persistentVolumeClaim:
-        claimName: dind-azurefile-pvc
+        claimName: my-azurefile
