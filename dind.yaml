@@ -4,26 +4,17 @@ metadata:
   name: dind
 spec:
   containers:
-    - name: test
-      image: jenkins/inbound-agent
-      tty: true
-      securityContext:
-        privileged: true
-      volumeMounts:
-        - name: docker-cache
-          mountPath: /dind
-          subPath: python-cache
     - name: dind
-      image: docker:dind
+      image: docker:dind-rootless
       tty: true
-      securityContext:
-        privileged: true
-      volumeMounts:
-        - name: docker-cache
-          mountPath: /var/lib/docker
-          subPath: python-cache
+      # securityContext:
+      #   privileged: true
+      # volumeMounts:
+      #   - name: docker-cache
+      #     mountPath: /var/lib/docker
+      #     subPath: python-cache
   restartPolicy: Never
-  volumes:
-    - name: docker-cache
-      persistentVolumeClaim:
-        claimName: my-azurefile
+  # volumes:
+  #   - name: docker-cache
+  #     persistentVolumeClaim:
+  #       claimName: my-azurefile
