@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: dind
-      image: docker:dind-rootless
+      image: docker:dind
       tty: true
       securityContext:
         privileged: true
